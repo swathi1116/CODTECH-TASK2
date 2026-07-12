@@ -1,0 +1,14 @@
+#SPEECH RECOGNITION TOOL
+import speech_recognition as sr
+recognizer = sr.Recognizer()
+with sr.AudioFile("Task2_Speech_To_Text.wav") as source:
+    print("Reading audio file...")
+    audio = recognizer.record(source)
+try:
+    print("\nRecognized Text:\n")
+    text = recognizer.recognize_google(audio)
+    print(text)
+except sr.UnknownValueError:
+    print("Could not understand the audio.")
+except sr.RequestError:
+    print("Check your internet connection.")
